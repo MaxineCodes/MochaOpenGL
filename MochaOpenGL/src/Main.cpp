@@ -1,7 +1,10 @@
-#include <iostream>
+#include "Logging/Logger.h"
 
 
 int main()
 {
-	std::cout << "good morning" << std::endl;
+	Mocha::Logger::Log("Good Morning!");
+
+
+	return 0;
 }
