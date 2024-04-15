@@ -139,16 +139,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Shaders\Shader.cpp" />
+    <ClCompile Include="src\RenderCore\Camera.cpp" />
+    <ClCompile Include="src\RenderCore\ResourceManagement\ResourceManager.cpp" />
+    <ClCompile Include="src\RenderCore\Shaders\Material.cpp" />
+    <ClCompile Include="src\RenderCore\RenderObject.cpp" />
+    <ClCompile Include="src\RenderCore\Shaders\Mesh.cpp" />
+    <ClCompile Include="src\RenderCore\Shaders\Shader.cpp" />
     <ClCompile Include="src\Logging\Logger.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
+    <ClCompile Include="src\RenderCore\Shaders\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\RenderCore\Camera.h" />
+    <ClInclude Include="src\RenderCore\ResourceManagement\ResourceManager.h" />
+    <ClInclude Include="src\RenderCore\Shaders\Material.h" />
+    <ClInclude Include="src\RenderCore\RenderObject.h" />
+    <ClInclude Include="src\RenderCore\Shaders\Mesh.h" />
     <ClInclude Include="src\RenderCore\Rendering.h" />
-    <ClInclude Include="src\Shaders\Shader.h" />
+    <ClInclude Include="src\RenderCore\Shaders\Shader.h" />
     <ClInclude Include="src\Logging\Logger.h" />
     <ClInclude Include="src\Window\Window.h" />
+    <ClInclude Include="src\RenderCore\Shaders\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="glew32.dll" />

@@ -9,35 +9,34 @@ namespace Mocha
 	class Window
 	{
 	public:
-
 		Window(GLint windowWidth, GLint windowHeight, const char* windowName);
 
 		~Window();
 
-		GLint getBufferWidth() { return bufferWidth; }
-		GLint getBufferHeight() { return bufferHeight; }
+		GLint getBufferWidth() { return m_bufferWidth; }
+		GLint getBufferHeight() { return m_bufferHeight; }
 
-		bool getShouldClose() { return glfwWindowShouldClose(mainWindow); }
+		bool getShouldClose() { return glfwWindowShouldClose(m_window); }
 
-		bool* getKeyArray() { return keys; }
+		bool* getKeyArray() { return m_keys; }
 		GLfloat getXChange();
 		GLfloat getYChange();
 
-		void swapBuffers() { glfwSwapBuffers(mainWindow); }
+		void swapBuffers() { glfwSwapBuffers(m_window); }
+
 
 	private:
+		GLFWwindow* m_window;
 
-		GLFWwindow* mainWindow;
+		const char* m_windowName = "Default Window";
 
-		const char* windowName = "Default Window";
+		GLint m_width = 400, m_height = 400;
+		GLint m_bufferWidth = 0, m_bufferHeight = 0;
 
-		GLint width = 400, height = 400;
-		GLint bufferWidth = 0, bufferHeight = 0;
+		bool m_keys[1024];
 
-		bool keys[1024];
-
-		GLfloat lastX = 0, lastY = 0, xChange = 0, yChange = 0;
-		bool mouseFirstMoved = false;
+		GLfloat m_lastX = 0, m_lastY = 0, m_xChange = 0, m_yChange = 0;
+		bool m_mouseFirstMoved = false;
 
 		static void handleKeyInput(GLFWwindow* window, int key, int code, int action, int mode);
 		static void handleMouseInput(GLFWwindow* window, double xPos, double yPos);

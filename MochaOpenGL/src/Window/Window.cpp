@@ -3,12 +3,12 @@
 
 Mocha::Window::Window(GLint windowWidth, GLint windowHeight, const char* windowName)
 {
-	width = windowWidth;
-	height = windowHeight;
+	m_width = windowWidth;
+	m_height = windowHeight;
 
 	for (size_t i = 0; i < 1024; i++)
 	{
-		keys[i] = 0;
+		m_keys[i] = 0;
 	}
 
 	// Initialise GLFW
@@ -29,8 +29,8 @@ Mocha::Window::Window(GLint windowWidth, GLint windowHeight, const char* windowN
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	// Create the window
-	mainWindow = glfwCreateWindow(width, height, windowName, NULL, NULL);
-	if (!mainWindow)
+	m_window = glfwCreateWindow(m_width, m_height, windowName, NULL, NULL);
+	if (!m_window)
 	{
 		Logger::Log("GLFW window creation failed!", Logger::ERROR);
 		glfwTerminate();
@@ -38,16 +38,16 @@ Mocha::Window::Window(GLint windowWidth, GLint windowHeight, const char* windowN
 	}
 
 	// Get Buffer Size information
-	glfwGetFramebufferSize(mainWindow, &bufferWidth, &bufferHeight);
+	glfwGetFramebufferSize(m_window, &m_bufferWidth, &m_bufferHeight);
 
 	// Set context for GLEW to use
-	glfwMakeContextCurrent(mainWindow);
+	glfwMakeContextCurrent(m_window);
 
 	// Handle key inputs
-	glfwSetKeyCallback(mainWindow, handleKeyInput);
-	glfwSetCursorPosCallback(mainWindow, handleMouseInput);
+	glfwSetKeyCallback(m_window, handleKeyInput);
+	glfwSetCursorPosCallback(m_window, handleMouseInput);
 
-	glfwSetInputMode(mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	// Allow modern extension features
 	glewExperimental = GL_TRUE;
@@ -56,7 +56,7 @@ Mocha::Window::Window(GLint windowWidth, GLint windowHeight, const char* windowN
 	{
 
 		Logger::Log("GLEW != GLEW_OK", Logger::ERROR);
-		glfwDestroyWindow(mainWindow);
+		glfwDestroyWindow(m_window);
 		glfwTerminate();
 		return;
 	}
@@ -65,15 +65,30 @@ Mocha::Window::Window(GLint windowWidth, GLint windowHeight, const char* windowN
 	glEnable(GL_DEPTH_TEST);
 
 	// Setup Viewport size
-	glViewport(0, 0, bufferWidth, bufferHeight);
+	glViewport(0, 0, m_bufferWidth, m_bufferHeight);
 
-	glfwSetWindowUserPointer(mainWindow, this);
+	glfwSetWindowUserPointer(m_window, this);
 
 
 }
 
 Mocha::Window::~Window()
 {
+
+}
+
+GLfloat Mocha::Window::getXChange()
+{
+	GLfloat theChange = m_xChange;
+	m_xChange = 0.0f;
+	return theChange;
+}
+
+GLfloat Mocha::Window::getYChange()
+{
+	GLfloat theChange = m_yChange;
+	m_yChange = 0.0f;
+	return theChange;
 }
 
 void Mocha::Window::handleKeyInput(GLFWwindow* window, int key, int code, int action, int mode)
@@ -89,11 +104,11 @@ void Mocha::Window::handleKeyInput(GLFWwindow* window, int key, int code, int ac
 	{
 		if (action == GLFW_PRESS)
 		{
-			theWindow->keys[key] = true;
+			theWindow->m_keys[key] = true;
 		}
 		else if (action == GLFW_RELEASE)
 		{
-			theWindow->keys[key] = false;
+			theWindow->m_keys[key] = false;
 		}
 	}
 }
@@ -102,16 +117,16 @@ void Mocha::Window::handleMouseInput(GLFWwindow* window, double xPos, double yPo
 {
 	Window* theWindow = static_cast<Window*>(glfwGetWindowUserPointer(window));
 
-	if (theWindow->mouseFirstMoved)
+	if (theWindow->m_mouseFirstMoved)
 	{
-		theWindow->lastX = xPos;
-		theWindow->lastY = yPos;
-		theWindow->mouseFirstMoved = false;
+		theWindow->m_lastX = xPos;
+		theWindow->m_lastY = yPos;
+		theWindow->m_mouseFirstMoved = false;
 	}
 
-	theWindow->xChange = xPos - theWindow->lastX;
-	theWindow->yChange = theWindow->lastY - yPos;
+	theWindow->m_xChange = xPos - theWindow->m_lastX;
+	theWindow->m_yChange = theWindow->m_lastY - yPos;
 
-	theWindow->lastX = xPos;
-	theWindow->lastY = yPos;
+	theWindow->m_lastX = xPos;
+	theWindow->m_lastY = yPos;
 }
