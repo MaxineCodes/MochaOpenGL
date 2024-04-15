@@ -11,13 +11,12 @@ namespace Mocha
 		Mesh(GLfloat* vertices, unsigned int* indices, unsigned int verticesCount, unsigned int indicesCount);
 		Mesh();
 		~Mesh();
+
+		void constructMesh(GLfloat* vertices, unsigned int* indices, unsigned int verticesCount, unsigned int indicesCount);
 	
 		void drawMesh();
 	
 		void clearMesh();
-	
-		// Generate a basic cube with shit UV's 
-		static Mesh generateDefaultMesh();
 	
 	
 	private:

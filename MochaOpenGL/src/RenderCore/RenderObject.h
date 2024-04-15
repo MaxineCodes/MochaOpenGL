@@ -26,17 +26,17 @@ namespace Mocha
 	{
 
 	public:
-		RenderObject(Material mat, Mesh mesh);
+		RenderObject(Material* mat, Mesh* mesh);
 		RenderObject();
 		~RenderObject();
 
 
 		// Draws the renderobject
-		void draw();
+		void draw(GLuint uniformModel);
 
 
 		// Transformation
-		void transform(glm::mat4 modelTransformationMatrix);
+		void transform(GLuint uniformModel, glm::mat4 modelTransformationMatrix);
 
 		void translate(float x, float y, float z);
 		void rotate(float x, float y, float z);
@@ -46,15 +46,17 @@ namespace Mocha
 	private:
 		// Material:
 		// Contains shader and textures
-		Material m_material;
+		Material* m_material;
 
 		// Mesh:
 		// Contains geometry
-		Mesh m_mesh;
+		//Mesh m_mesh;
+
+		Mesh* m_mesh;
 
 		// Model matrix to apply transformations to. Assigned as "empty" 1.0f matrix.
 		// Gets passed to the vertex shader to apply transformations to the mesh.
-		glm::mat4 m_modelMatrix = glm::mat4(1.0f);
+		glm::mat4 m_modelMatrix;
 
 	};
 }

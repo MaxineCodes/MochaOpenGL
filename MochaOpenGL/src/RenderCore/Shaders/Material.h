@@ -6,7 +6,9 @@ namespace Mocha
 {
 	class Material
 	{
-
+	public:
+		Material();
+		~Material();
 	};
 }
 

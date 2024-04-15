@@ -163,6 +163,9 @@
     <ClInclude Include="src\RenderCore\Shaders\Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\Shaders\checkerboard.frag" />
+    <None Include="Content\Shaders\default.frag" />
+    <None Include="Content\Shaders\default.vert" />
     <None Include="glew32.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

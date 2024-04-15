@@ -80,5 +80,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="glew32.dll" />
+    <None Include="Content\Shaders\default.vert" />
+    <None Include="Content\Shaders\checkerboard.frag" />
+    <None Include="Content\Shaders\default.frag" />
   </ItemGroup>
 </Project>

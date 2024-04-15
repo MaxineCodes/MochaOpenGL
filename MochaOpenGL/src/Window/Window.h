@@ -16,7 +16,7 @@ namespace Mocha
 		GLint getBufferWidth() { return m_bufferWidth; }
 		GLint getBufferHeight() { return m_bufferHeight; }
 
-		bool getShouldClose() { return glfwWindowShouldClose(m_window); }
+		bool shouldClose() { return glfwWindowShouldClose(m_window); }
 
 		bool* getKeyArray() { return m_keys; }
 		GLfloat getXChange();
