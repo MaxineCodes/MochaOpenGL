@@ -139,13 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Shaders\Shader.cpp" />
     <ClCompile Include="src\Logging\Logger.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\Core\Window.cpp" />
+    <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\RenderCore\Rendering.h" />
+    <ClInclude Include="src\Shaders\Shader.h" />
     <ClInclude Include="src\Logging\Logger.h" />
-    <ClInclude Include="src\Core\Window.h" />
+    <ClInclude Include="src\Window\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="glew32.dll" />
