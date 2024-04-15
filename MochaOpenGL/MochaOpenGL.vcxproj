@@ -76,10 +76,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\glfw-3.4.bin.WIN64\include;$(SolutionDir)Dependencies\glm-0.9.9.8;$(SolutionDir)Dependencies\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\x64;$(SolutionDir)Dependencies\glfw-3.4.bin.WIN64\lib-vc2022;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);opengl32.lib;glew32.lib;glfw3.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -90,12 +93,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\glfw-3.4.bin.WIN64\include;$(SolutionDir)Dependencies\glm-0.9.9.8;$(SolutionDir)Dependencies\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\x64;$(SolutionDir)Dependencies\glfw-3.4.bin.WIN64\lib-vc2022;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);opengl32.lib;glew32.lib;glfw3.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -104,10 +110,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\glfw-3.4.bin.WIN64\include;$(SolutionDir)Dependencies\glm-0.9.9.8;$(SolutionDir)Dependencies\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\x64;$(SolutionDir)Dependencies\glfw-3.4.bin.WIN64\lib-vc2022;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);opengl32.lib;glew32.lib;glfw3.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -118,20 +127,28 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\glfw-3.4.bin.WIN64\include;$(SolutionDir)Dependencies\glm-0.9.9.8;$(SolutionDir)Dependencies\stb;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\glew-2.1.0\lib\Release\x64;$(SolutionDir)Dependencies\glfw-3.4.bin.WIN64\lib-vc2022;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);opengl32.lib;glew32.lib;glfw3.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Logging\Logger.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Core\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Logging\Logger.h" />
+    <ClInclude Include="src\Core\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="glew32.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
