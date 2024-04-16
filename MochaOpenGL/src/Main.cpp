@@ -108,7 +108,7 @@ int main()
 		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 
 
-		//object.transform(uniformModel, model);
+		object.transform(uniformModel, model);
 
 		//object.translate(0.0f, 0.0f, -5.0f);
 		//object.scale(0.4f, 0.4f, 0.4f);

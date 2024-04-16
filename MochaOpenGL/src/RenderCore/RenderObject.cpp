@@ -33,7 +33,10 @@ void Mocha::RenderObject::draw(GLuint uniformModel)
 {
 	// Apply transformations stored in the model matrix
 	//transform(uniformModel, m_modelMatrix);
-	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(m_modelMatrix));
+	//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(m_modelMatrix));
+
+	// Set the material to be active for the next draw
+	m_material->useMaterial();
 
 	// Draw mesh
 	m_mesh->drawMesh();
@@ -43,8 +46,8 @@ void Mocha::RenderObject::draw(GLuint uniformModel)
 
 void Mocha::RenderObject::transform(GLuint uniformModel, glm::mat4 modelTransformationMatrix)
 {
-	m_modelMatrix = modelTransformationMatrix;
-	//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(modelTransformationMatrix));
+	//m_modelMatrix = modelTransformationMatrix;
+	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(modelTransformationMatrix));
 }
 
 void Mocha::RenderObject::translate(float x, float y, float z)
