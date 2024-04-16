@@ -18,6 +18,7 @@
 
 #include "Shaders\Mesh.h"
 #include "Shaders\Material.h"
+#include "Camera.h"
 
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
@@ -28,21 +29,19 @@ namespace Mocha
 	{
 
 	public:
-		RenderObject(Material* mat, Mesh* mesh);
+		RenderObject(Material* mat, Mesh* mesh, glm::mat4 projectionMatrix, Camera* camera);
 		RenderObject();
 		~RenderObject();
 
 
 		// Draws the renderobject
-		void draw(GLuint uniformModel);
+		void draw();
 
 
 		// Transformation
-		void transform(GLuint uniformModel, glm::mat4 modelTransformationMatrix);
-
-		void translate(float x, float y, float z);
-		void rotate(float x, float y, float z);
-		void scale(float x, float y, float z);
+		void setTranslation(float x, float y, float z);
+		void setRotation(float x, float y, float z);
+		void setScale(float x, float y, float z);
 
 
 	private:
@@ -56,10 +55,19 @@ namespace Mocha
 
 		Mesh* m_mesh;
 
+		Camera* m_camera_ptr;
+		glm::mat4 m_projectionMatrix;
+
 		// Model matrix to apply transformations to. Assigned as "empty" 1.0f matrix.
 		// Gets passed to the vertex shader to apply transformations to the mesh.
-		glm::mat4 m_modelMatrix;
+		glm::mat4 m_modelMatrix = glm::mat4(1.0f);
 
+		glm::vec3 m_translationVector, m_rotationVector, m_scaleVector;
+
+
+		GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0;
+
+		void applyTransforms();
 	};
 }
 

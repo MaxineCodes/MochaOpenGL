@@ -55,18 +55,23 @@ int main()
 	const int windowHeight = 1400;
 
 	Mocha::Window mochaMainWindow = Mocha::Window(windowWidth, windowHeight, "wondow");
-
-
-	Mocha::Material mat;
-	Mocha::Mesh mesh = Mocha::GenerateDefaultMesh();
-	Mocha::RenderObject object(&mat, &mesh);
-
-	Mocha::Shader shader;
-
 	camera = Mocha::Camera(glm::vec3(0.0, 0.0, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f, 0.0f);
-
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0;
 	glm::mat4 projection = glm::perspective(45.0f, (GLfloat)mochaMainWindow.getBufferWidth() / (GLfloat)mochaMainWindow.getBufferHeight(), 0.1f, 200.0f);
+
+
+	Mocha::Shader shader;
+	Mocha::Material mat;
+	mat.setShader(&shader);
+
+	Mocha::Mesh mesh = Mocha::GenerateDefaultMesh();
+	Mocha::RenderObject object(&mat, &mesh, projection, &camera);
+
+	Mocha::Shader shader2;
+	Mocha::Material mat2;
+	mat2.setShader(&shader2);
+	Mocha::Mesh mesh2 = Mocha::GenerateDefaultMesh();
+	Mocha::RenderObject object2(&mat2, &mesh2, projection, &camera);
 
 
 	// Main loop
@@ -88,7 +93,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-		shader.useShader();
+		//shader.useShader();
 
 
 		uniformModel = shader.getModelMatrixLocation();
@@ -96,24 +101,32 @@ int main()
 		uniformView = shader.getViewMatrixLocation();
 
 
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
+		//glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
+		//glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 
 
-		glm::mat4 model(1.0f);
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -5.0f));
-		model = glm::rotate(model, 1.57f, glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		//glm::mat4 model(1.0f);
+		//model = glm::mat4(1.0f);
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, -5.0f));
+		//model = glm::rotate(model, 1.57f, glm::vec3(1.0f, 0.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
 		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 
 
-		object.transform(uniformModel, model);
+		//object.transform(uniformModel, model);
 
-		//object.translate(0.0f, 0.0f, -5.0f);
-		//object.scale(0.4f, 0.4f, 0.4f);
+		object.setTranslation(0.0f, 0.0f, -5.0f);
+		object.setRotation(0.5f, 0.5f, 0.5f);
+		object.setScale(0.8f, 0.8f, 0.8f);
 
-		object.draw(uniformModel);
+		object.draw();
+
+
+		object2.setTranslation(0.0f, 0.0f, -5.0f);
+		object2.setRotation(0.0f, 0.0f, 0.0f);
+		object2.setScale(0.8f, 0.8f, 0.8f);
+
+		object2.draw();
 
 
 		glUseProgram(0);

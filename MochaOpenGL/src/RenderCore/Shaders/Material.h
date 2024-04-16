@@ -28,6 +28,8 @@ namespace Mocha
 		Material();
 		~Material();
 
+		Shader* getShader() { return m_shader; }
+
 		// Set this material to be active for the next drawcall
 		void useMaterial();
 

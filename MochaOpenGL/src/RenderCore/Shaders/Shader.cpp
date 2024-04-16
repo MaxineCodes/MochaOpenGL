@@ -1,5 +1,6 @@
 #include "Shader.h"
 #include <fstream>
+#include "../../Logging/Logger.h"
 
 Mocha::Shader::Shader(const char* vertexShaderSourceLocation, const char* fragmentShaderSourceLocation)
 {
@@ -19,7 +20,7 @@ Mocha::Shader::Shader()
 	m_uniformViewMatrix = 0;
 
 	const char* defaultVertShaderLocation = "./Content/Shaders/default.vert";
-	const char* defaultFragShaderLocation = "./Content/Shaders/checkerboard.frag";
+	const char* defaultFragShaderLocation = "./Content/Shaders/default.frag";
 
 	createFromFiles(defaultVertShaderLocation, defaultFragShaderLocation);
 }
@@ -49,6 +50,7 @@ void Mocha::Shader::createFromFiles(const char* vertexShaderSourceLocation, cons
 
 void Mocha::Shader::useShader()
 {
+	//Logger::Log("useShader()");
 	glUseProgram(m_shaderID);
 }
 
