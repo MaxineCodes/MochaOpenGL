@@ -3,7 +3,7 @@
 #include "..\Logging\Logger.h"
 
 #include "../Window/Window.h"
-#include "RenderObject.h"
+#include "RenderObjects/RenderObject.h"
 #include "Camera.h"
 
 #include <glm\glm.hpp>

@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include "Shaders\Mesh.h"
-#include "Shaders\Material.h"
-#include "Camera.h"
+#include "Mesh.h"
+#include "Material.h"
+#include "../Camera.h"
 
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>

@@ -24,22 +24,22 @@
     <ClCompile Include="src\Window\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RenderCore\Shaders\Shader.cpp">
+    <ClCompile Include="src\RenderCore\RenderObjects\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RenderCore\Shaders\Mesh.cpp">
+    <ClCompile Include="src\RenderCore\RenderObjects\Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RenderCore\RenderObject.cpp">
+    <ClCompile Include="src\RenderCore\RenderObjects\RenderObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RenderCore\Shaders\Material.cpp">
+    <ClCompile Include="src\RenderCore\RenderObjects\Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\RenderCore\ResourceManagement\ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\RenderCore\Shaders\Texture.cpp">
+    <ClCompile Include="src\RenderCore\RenderObjects\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\RenderCore\Camera.cpp">
@@ -56,25 +56,25 @@
     <ClInclude Include="src\Window\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\RenderCore\Shaders\Shader.h">
+    <ClInclude Include="src\RenderCore\RenderObjects\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\RenderCore\Rendering.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\RenderCore\Shaders\Mesh.h">
+    <ClInclude Include="src\RenderCore\RenderObjects\Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\RenderCore\RenderObject.h">
+    <ClInclude Include="src\RenderCore\RenderObjects\RenderObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\RenderCore\Shaders\Material.h">
+    <ClInclude Include="src\RenderCore\RenderObjects\Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\RenderCore\ResourceManagement\ResourceManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\RenderCore\Shaders\Texture.h">
+    <ClInclude Include="src\RenderCore\RenderObjects\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\RenderCore\Camera.h">

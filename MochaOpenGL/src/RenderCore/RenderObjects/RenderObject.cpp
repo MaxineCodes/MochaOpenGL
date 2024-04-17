@@ -3,9 +3,9 @@
 #include <glm\gtc\type_ptr.hpp>
 
 #include "RenderObject.h"
-#include "../Logging/Logger.h"
+#include "../../Logging/Logger.h"
 
-#include "Rendering.h"
+#include "../Rendering.h"
 
 #include <iostream>
 
