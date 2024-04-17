@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\RenderCore\Camera.cpp" />
+    <ClCompile Include="src\RenderCore\Rendering.cpp" />
     <ClCompile Include="src\RenderCore\ResourceManagement\ResourceManager.cpp" />
     <ClCompile Include="src\RenderCore\Shaders\Material.cpp" />
     <ClCompile Include="src\RenderCore\RenderObject.cpp" />

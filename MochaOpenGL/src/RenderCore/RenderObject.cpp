@@ -5,6 +5,8 @@
 #include "RenderObject.h"
 #include "../Logging/Logger.h"
 
+#include "Rendering.h"
+
 #include <iostream>
 
 Mocha::RenderObject::RenderObject(Material* mat, Mesh* mesh, glm::mat4 projectionMatrix, Camera* camera)
@@ -15,6 +17,9 @@ Mocha::RenderObject::RenderObject(Material* mat, Mesh* mesh, glm::mat4 projectio
 
 	m_camera_ptr = camera;
 	m_projectionMatrix = projectionMatrix;
+
+	//m_camera_ptr = &RenderGlobals::camera;
+	//m_projectionMatrix = RenderGlobals::projection;
 
 	m_modelMatrix = glm::mat4(1.0f);
 
