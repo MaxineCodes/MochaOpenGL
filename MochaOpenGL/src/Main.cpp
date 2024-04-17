@@ -39,5 +39,5 @@
 // Entrypoint (Duh)
 int main()
 {
-	Mocha::RunApplication();
+	Mocha::Rendering::RunApplication();
 }

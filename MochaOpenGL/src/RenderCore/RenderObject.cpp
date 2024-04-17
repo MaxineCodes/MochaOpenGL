@@ -13,7 +13,6 @@ Mocha::RenderObject::RenderObject(Material* mat, Mesh* mesh, glm::mat4 projectio
 {
 	m_material = mat;
 	m_mesh = mesh;
-	//m_mesh = GenerateDefaultMesh();
 
 	m_camera_ptr = camera;
 	m_projectionMatrix = projectionMatrix;
@@ -81,7 +80,11 @@ void Mocha::RenderObject::applyTransforms()
 
 	m_modelMatrix = glm::mat4(1.0f);
 	m_modelMatrix = glm::translate(m_modelMatrix, m_translationVector);
-	m_modelMatrix = glm::rotate(m_modelMatrix, 1.57f, m_rotationVector);
+
+	m_modelMatrix = glm::rotate(m_modelMatrix, m_rotationVector.x, glm::vec3(1.0f, 0.0f, 0.0f));
+	m_modelMatrix = glm::rotate(m_modelMatrix, m_rotationVector.y, glm::vec3(0.0f, 1.0f, 0.0f));
+	m_modelMatrix = glm::rotate(m_modelMatrix, m_rotationVector.z, glm::vec3(0.0f, 0.0f, 1.0f));
+
 	m_modelMatrix = glm::scale(m_modelMatrix, m_scaleVector);
 
 	glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(m_modelMatrix));
