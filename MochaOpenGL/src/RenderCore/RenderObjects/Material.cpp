@@ -23,6 +23,18 @@ void Mocha::Material::useMaterial()
 
 
 	// Bind textures
+	for (int i = 0; i < m_textures.size(); i++)
+	{
+		if (m_textures[i] != nullptr)
+		{
+			m_textures[i]->useTexture();
+		}
+
+		else
+		{
+			Logger::Log("Texture is NULLPTR", Logger::logLevel::WARNING);
+		}
+	}
 
 	// Set the shader to be active for the next drawcall
 	m_shader->useShader();

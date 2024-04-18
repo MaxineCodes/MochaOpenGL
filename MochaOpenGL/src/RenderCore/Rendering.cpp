@@ -18,21 +18,23 @@ int Mocha::Rendering::RunApplication()
 
 
 	// Temporary code to make some objects to render
+	Texture brickTexture;
+	brickTexture = Texture("Content/Textures/stylized_bricks_basecolor.png");
+	brickTexture.loadTexture();
+
 	Mocha::Shader shader;
 	Mocha::Material mat;
 	mat.setShader(&shader);
+	mat.addTexture(&brickTexture);
 	Mocha::Mesh mesh = Mocha::GenerateDefaultMesh();
 	Mocha::RenderObject object(&mat, &mesh, Globals::projection, &Globals::camera);
 
 	Mocha::Shader shader2;
 	Mocha::Material mat2;
 	mat2.setShader(&shader2);
+	mat.addTexture(&brickTexture);
 	Mocha::Mesh mesh2 = Mocha::GenerateDefaultMesh();
 	Mocha::RenderObject object2(&mat2, &mesh2, Globals::projection, &Globals::camera);
-
-	Texture brickTexture;
-	brickTexture = Texture("Content/Textures/stylized_bricks_basecolor.png");
-	brickTexture.loadTexture();
 
 
 	while (!mochaMainWindow.shouldClose())
@@ -42,15 +44,11 @@ int Mocha::Rendering::RunApplication()
 
 		// Inputs
 		glfwPollEvents();
-		//Globals::camera.keyControl(mochaMainWindow.getKeyArray(), Globals::deltaTime);
-		//Globals::camera.mouseControl(mochaMainWindow.getXChange(), mochaMainWindow.getYChange());
 
 
 		// Clear window with a nice blue shade
 		glClearColor(0.4f, 0.7f, 0.9f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-		brickTexture.useTexture();
 
 
 		// Temporary code to render objects
