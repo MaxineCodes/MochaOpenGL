@@ -10,7 +10,7 @@ int Mocha::Rendering::RunApplication()
 
 	// Create a window, which also becomes the active OpenGL viewport
 	Window mochaMainWindow = Window(Globals::windowWidth, Globals::windowHeight, "wondow");
-	Globals::camera = Camera(glm::vec3(0.0, 0.0, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), 90.0f, 0.0f);
+	Globals::camera = Camera(glm::vec3(0.0, 0.0, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), 180.0f, 0.0f);
 
 	// Figure out the perspective matrix and store it globally
 	float aspectRatio = (GLfloat)mochaMainWindow.getBufferWidth() / (GLfloat)mochaMainWindow.getBufferHeight();
@@ -30,6 +30,9 @@ int Mocha::Rendering::RunApplication()
 	Mocha::Mesh mesh2 = Mocha::GenerateDefaultMesh();
 	Mocha::RenderObject object2(&mat2, &mesh2, Globals::projection, &Globals::camera);
 
+	Texture brickTexture;
+	brickTexture = Texture("Content/Textures/stylized_bricks_basecolor.png");
+	brickTexture.loadTexture();
 
 
 	while (!mochaMainWindow.shouldClose())
@@ -39,22 +42,24 @@ int Mocha::Rendering::RunApplication()
 
 		// Inputs
 		glfwPollEvents();
-		Globals::camera.keyControl(mochaMainWindow.getKeyArray(), Globals::deltaTime);
-		Globals::camera.mouseControl(mochaMainWindow.getXChange(), mochaMainWindow.getYChange());
+		//Globals::camera.keyControl(mochaMainWindow.getKeyArray(), Globals::deltaTime);
+		//Globals::camera.mouseControl(mochaMainWindow.getXChange(), mochaMainWindow.getYChange());
 
 
 		// Clear window with a nice blue shade
 		glClearColor(0.4f, 0.7f, 0.9f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		brickTexture.useTexture();
+
 
 		// Temporary code to render objects
-		object.setTranslation(5.0f, 0.0f, -5.0f);
+		object.setTranslation(-8.0f, 0.0f, -3.0f);
 		object.setRotation(0.0f, 0.0f, 45.0f);
 		object.setScale(1.2f, 1.2f, 1.2f);
 		object.draw();
 
-		object2.setTranslation(5.0f, 0.0f, 5.0f);
+		object2.setTranslation(-8.0f, 0.0f, 3.0f);
 		object2.setRotation(0.0f, 45.0f, 0.0f);
 		object2.setScale(0.8f, 0.8f, 0.8f);
 		object2.draw();
@@ -76,7 +81,7 @@ int Mocha::Rendering::RunApplication()
 void Mocha::Rendering::UpdateDeltaTime()
 {
 	// Get the time between the last frame and the next frame
-	GLfloat currentTime = glfwGetTime();
+	GLfloat currentTime = (GLfloat)glfwGetTime();
 	Globals::deltaTime = currentTime - lastTime;
 	lastTime = currentTime;
 }

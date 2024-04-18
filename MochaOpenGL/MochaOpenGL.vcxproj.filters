@@ -86,5 +86,12 @@
     <None Include="Content\Shaders\default.vert" />
     <None Include="Content\Shaders\checkerboard.frag" />
     <None Include="Content\Shaders\default.frag" />
+    <None Include="packages.config" />
+    <None Include="Content\Shaders\default_texture.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Content\Textures\stylized_bricks_basecolor.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

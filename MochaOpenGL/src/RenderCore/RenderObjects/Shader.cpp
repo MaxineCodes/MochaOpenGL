@@ -20,7 +20,7 @@ Mocha::Shader::Shader()
 	m_uniformViewMatrix = 0;
 
 	const char* defaultVertShaderLocation = "./Content/Shaders/default.vert";
-	const char* defaultFragShaderLocation = "./Content/Shaders/default.frag";
+	const char* defaultFragShaderLocation = "./Content/Shaders/default_texture.frag";
 
 	createFromFiles(defaultVertShaderLocation, defaultFragShaderLocation);
 }
