@@ -38,7 +38,7 @@ Mocha::RenderObject::~RenderObject()
 
 }
 
-void Mocha::RenderObject::draw()
+void Mocha::RenderObject::draw(Light* light)
 {
 	// Set the material to be active for the next draw
 	m_material->useMaterial();
@@ -48,6 +48,12 @@ void Mocha::RenderObject::draw()
 	uniformView = m_material->getShader()->getViewMatrixLocation();
 	glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(m_projectionMatrix));
 	glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(m_camera_ptr->calculateViewMatrix()));
+
+	// Apply ambient light uniforms
+	uniformAmbientColour = m_material->getShader()->getAmbientColourLocation();
+	uniformAmbientIntensity = m_material->getShader()->getAmbientIntensityLocation();
+
+	light->useLight(uniformAmbientColour, uniformAmbientIntensity);
 
 	// Apply transformations stored in the member transform vectors
 	applyTransforms();

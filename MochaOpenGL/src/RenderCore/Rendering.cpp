@@ -18,6 +18,9 @@ int Mocha::Rendering::RunApplication()
 
 
 	// Temporary code to make some objects to render
+	Light mainLight;
+	mainLight = Light();
+
 	Texture brickTexture;
 	brickTexture = Texture("Content/Textures/stylized_bricks_basecolor.png");
 	brickTexture.loadTexture();
@@ -44,23 +47,30 @@ int Mocha::Rendering::RunApplication()
 
 		// Inputs
 		glfwPollEvents();
-
+		Globals::camera.keyControl(mochaMainWindow.getKeyArray(), Globals::deltaTime);
+		Globals::camera.mouseControl(mochaMainWindow.getXChange(), mochaMainWindow.getYChange());
 
 		// Clear window with a nice blue shade
 		glClearColor(0.4f, 0.7f, 0.9f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		// Apply ambient light uniforms
+		//Rendering::Globals::uniformAmbientColour = shader.getAmbientColourLocation();
+		//Rendering::Globals::uniformAmbientIntensity = shader.getAmbientIntensityLocation();
+
+		//mainLight.useLight(0, 0);
 
 
 		// Temporary code to render objects
 		object.setTranslation(-8.0f, 0.0f, -3.0f);
 		object.setRotation(0.0f, 0.0f, 45.0f);
 		object.setScale(1.2f, 1.2f, 1.2f);
-		object.draw();
+		object.draw(&mainLight);
 
 		object2.setTranslation(-8.0f, 0.0f, 3.0f);
 		object2.setRotation(0.0f, 45.0f, 0.0f);
 		object2.setScale(0.8f, 0.8f, 0.8f);
-		object2.draw();
+		object2.draw(&mainLight);
 
 
 		// Use no shader

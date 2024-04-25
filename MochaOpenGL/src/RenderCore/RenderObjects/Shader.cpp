@@ -20,7 +20,7 @@ Mocha::Shader::Shader()
 	m_uniformViewMatrix = 0;
 
 	const char* defaultVertShaderLocation = "./Content/Shaders/default.vert";
-	const char* defaultFragShaderLocation = "./Content/Shaders/default_texture.frag";
+	const char* defaultFragShaderLocation = "./Content/Shaders/lit_default.frag";
 
 	createFromFiles(defaultVertShaderLocation, defaultFragShaderLocation);
 }
@@ -127,6 +127,9 @@ void Mocha::Shader::compileShader(const char* vertexShaderSource, const char* fr
 	m_uniformModelMatrix = glGetUniformLocation(m_shaderID, "model");
 	m_uniformProjectionMatrix = glGetUniformLocation(m_shaderID, "projection");
 	m_uniformViewMatrix = glGetUniformLocation(m_shaderID, "view");
+
+	m_uniformAmbientColour = glGetUniformLocation(m_shaderID, "directionalLight.colour");
+	m_uniformAmbientIntensity = glGetUniformLocation(m_shaderID, "directionalLight.ambientIntensity");
 }
 
 void Mocha::Shader::addShader(GLuint shaderProgramID, const char* shaderSource, GLenum shaderType)

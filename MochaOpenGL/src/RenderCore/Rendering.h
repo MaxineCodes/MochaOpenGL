@@ -5,11 +5,11 @@
 #include "../Window/Window.h"
 #include "RenderObjects/RenderObject.h"
 #include "Camera.h"
+#include "../Lights/Light.h"
 
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
 #include <glm\gtc\type_ptr.hpp>
-
 
 
 
@@ -25,6 +25,7 @@ namespace Mocha
 			static const int windowHeight = 1400;
 
 			static GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0;
+			//GLuint uniformAmbientColour = 0, uniformAmbientIntensity = 0;
 			static glm::mat4 projection;
 			static Camera camera;
 

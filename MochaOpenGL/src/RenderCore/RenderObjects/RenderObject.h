@@ -19,6 +19,7 @@
 #include "Mesh.h"
 #include "Material.h"
 #include "../Camera.h"
+#include "../../Lights/Light.h"
 
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
@@ -35,7 +36,7 @@ namespace Mocha
 
 
 		// Draws the renderobject
-		void draw();
+		void draw(Light* light);
 
 
 		// Transformation
@@ -66,6 +67,7 @@ namespace Mocha
 
 
 		GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0;
+		GLuint uniformAmbientIntensity = 0, uniformAmbientColour = 0;
 
 		void applyTransforms();
 	};

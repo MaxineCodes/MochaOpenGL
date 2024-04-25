@@ -48,6 +48,12 @@
     <ClCompile Include="src\RenderCore\Rendering.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Window\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lights\Light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Logging\Logger.h">
@@ -80,14 +86,21 @@
     <ClInclude Include="src\RenderCore\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Window\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lights\Light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="glew32.dll" />
     <None Include="Content\Shaders\default.vert" />
-    <None Include="Content\Shaders\checkerboard.frag" />
-    <None Include="Content\Shaders\default.frag" />
+    <None Include="Content\Shaders\unlit_checkerboard.frag" />
+    <None Include="Content\Shaders\unlit_vertposcolour.frag" />
     <None Include="packages.config" />
-    <None Include="Content\Shaders\default_texture.frag" />
+    <None Include="Content\Shaders\unlit_texture.frag" />
+    <None Include="Content\Shaders\lit_default.frag" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Content\Textures\stylized_bricks_basecolor.png">
