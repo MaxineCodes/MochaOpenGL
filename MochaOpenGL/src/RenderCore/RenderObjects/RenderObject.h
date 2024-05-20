@@ -19,7 +19,7 @@
 #include "Mesh.h"
 #include "Material.h"
 #include "../Camera.h"
-#include "../../Lights/Light.h"
+#include "../Lights/Light.h"
 
 #include <glm\glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>

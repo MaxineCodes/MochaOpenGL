@@ -77,6 +77,11 @@ Mocha::Window::~Window()
 
 }
 
+GLFWwindow* Mocha::Window::getWindowPtr()
+{
+	return m_window;
+}
+
 GLfloat Mocha::Window::getXChange()
 {
 	GLfloat theChange = m_xChange;

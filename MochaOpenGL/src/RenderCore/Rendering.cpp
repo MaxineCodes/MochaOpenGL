@@ -16,6 +16,9 @@ int Mocha::Rendering::RunApplication()
 	float aspectRatio = (GLfloat)mochaMainWindow.getBufferWidth() / (GLfloat)mochaMainWindow.getBufferHeight();
 	Globals::projection = CalculatePerspectiveProjectionMatrix(45.0f, aspectRatio, 0.1f, 200.0f);
 
+	// Setup the GUI
+	GUI::Initiate(mochaMainWindow.getWindowPtr());
+
 
 	// Temporary code to make some objects to render
 	Light mainLight;
@@ -54,6 +57,9 @@ int Mocha::Rendering::RunApplication()
 		glClearColor(0.4f, 0.7f, 0.9f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		// Let the GUI know that a new frame is starting
+		GUI::InitiateFrame();
+
 		// Apply ambient light uniforms
 		//Rendering::Globals::uniformAmbientColour = shader.getAmbientColourLocation();
 		//Rendering::Globals::uniformAmbientIntensity = shader.getAmbientIntensityLocation();
@@ -72,6 +78,8 @@ int Mocha::Rendering::RunApplication()
 		object2.setScale(0.8f, 0.8f, 0.8f);
 		object2.draw(&mainLight);
 
+		// Draw the GUI ontop of everything else that's been rendered
+		GUI::Draw();
 
 		// Use no shader
 		glUseProgram(0);
@@ -80,8 +88,8 @@ int Mocha::Rendering::RunApplication()
 		mochaMainWindow.swapBuffers();
 	}
 
-
-
+	// Clean up the GUI after the loop is over
+	GUI::Destroy();
 
 	return 0;
 }

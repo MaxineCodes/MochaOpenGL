@@ -53,7 +53,7 @@ void Mocha::RenderObject::draw(Light* light)
 	uniformAmbientColour = m_material->getShader()->getAmbientColourLocation();
 	uniformAmbientIntensity = m_material->getShader()->getAmbientIntensityLocation();
 
-	light->useLight(uniformAmbientColour, uniformAmbientIntensity);
+	light->useLight(uniformAmbientIntensity, uniformAmbientColour);
 
 	// Apply transformations stored in the member transform vectors
 	applyTransforms();

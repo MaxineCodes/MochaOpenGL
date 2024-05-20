@@ -13,6 +13,7 @@ namespace Mocha
 
 		~Window();
 
+		GLFWwindow* getWindowPtr();
 		GLint getBufferWidth() { return m_bufferWidth; }
 		GLint getBufferHeight() { return m_bufferHeight; }
 
