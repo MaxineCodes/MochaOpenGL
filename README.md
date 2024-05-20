@@ -13,6 +13,9 @@ Just some text to organise my thoughts and write down what the end result needs 
 
 ## GUI
 The application should have a simple GUI so you can play around with all its features.
+- Outliner for showing/selecting meshes in the scene
+- Outliner for showing/selecting materials
+- Outliner for showing/selecting lights
 - Import/Add model button
 - Material GUI to adjust all material properties
 
