@@ -14,9 +14,9 @@ int Mocha::Rendering::RunApplication()
 
 	// Figure out the perspective matrix and store it globally
 	float aspectRatio = (GLfloat)mochaMainWindow.getBufferWidth() / (GLfloat)mochaMainWindow.getBufferHeight();
-	Globals::projection = CalculatePerspectiveProjectionMatrix(45.0f, aspectRatio, 0.1f, 200.0f);
+	Globals::projectionMatrix = CalculatePerspectiveProjectionMatrix(45.0f, aspectRatio, 0.1f, 200.0f);
 
-	// Setup the GUI
+	// Setup the GUI context
 	GUI::Initiate(mochaMainWindow.getWindowPtr());
 
 
@@ -29,18 +29,18 @@ int Mocha::Rendering::RunApplication()
 	brickTexture.loadTexture();
 
 	Mocha::Shader shader;
+
 	Mocha::Material mat;
 	mat.setShader(&shader);
 	mat.addTexture(&brickTexture);
 	Mocha::Mesh mesh = Mocha::GenerateDefaultMesh();
-	Mocha::RenderObject object(&mat, &mesh, Globals::projection, &Globals::camera);
+	Mocha::RenderObject object(&mat, &mesh);
 
-	Mocha::Shader shader2;
 	Mocha::Material mat2;
-	mat2.setShader(&shader2);
-	mat.addTexture(&brickTexture);
+	mat2.setShader(&shader);
+	mat2.addTexture(&brickTexture);
 	Mocha::Mesh mesh2 = Mocha::GenerateDefaultMesh();
-	Mocha::RenderObject object2(&mat2, &mesh2, Globals::projection, &Globals::camera);
+	Mocha::RenderObject object2(&mat2, &mesh2);
 
 
 	while (!mochaMainWindow.shouldClose())
@@ -96,7 +96,7 @@ int Mocha::Rendering::RunApplication()
 
 void Mocha::Rendering::UpdateDeltaTime()
 {
-	// Get the time between the last frame and the next frame
+	// Get the time between the last frame and the current frame
 	GLfloat currentTime = (GLfloat)glfwGetTime();
 	Globals::deltaTime = currentTime - lastTime;
 	lastTime = currentTime;

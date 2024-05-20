@@ -124,12 +124,7 @@ void Mocha::Shader::compileShader(const char* vertexShaderSource, const char* fr
 		return;
 	}
 
-	m_uniformModelMatrix = glGetUniformLocation(m_shaderID, "model");
-	m_uniformProjectionMatrix = glGetUniformLocation(m_shaderID, "projection");
-	m_uniformViewMatrix = glGetUniformLocation(m_shaderID, "view");
-
-	m_uniformAmbientColour = glGetUniformLocation(m_shaderID, "directionalLight.colour");
-	m_uniformAmbientIntensity = glGetUniformLocation(m_shaderID, "directionalLight.ambientIntensity");
+	setShaderUniforms();
 }
 
 void Mocha::Shader::addShader(GLuint shaderProgramID, const char* shaderSource, GLenum shaderType)
@@ -157,4 +152,22 @@ void Mocha::Shader::addShader(GLuint shaderProgramID, const char* shaderSource, 
 	}
 
 	glAttachShader(shaderProgramID, shader);
+}
+
+void Mocha::Shader::setShaderUniforms()
+{
+	// Matrices
+	m_uniformModelMatrix = glGetUniformLocation(m_shaderID, "model");
+	m_uniformProjectionMatrix = glGetUniformLocation(m_shaderID, "projection");
+	m_uniformViewMatrix = glGetUniformLocation(m_shaderID, "view");
+	// Camera
+	m_uniformEyePosition = glGetUniformLocation(m_shaderID, "eyePosition");
+	// Lights
+	m_uniformAmbientColour = glGetUniformLocation(m_shaderID, "directionalLight.colour");
+	m_uniformAmbientIntensity = glGetUniformLocation(m_shaderID, "directionalLight.ambientIntensity");
+	m_uniformDiffuseIntensity = glGetUniformLocation(m_shaderID, "directionalLight.diffuseIntensity");
+	m_uniformDirection = glGetUniformLocation(m_shaderID, "directionalLight.direction");
+	// Material
+	m_uniformSpecular = glGetUniformLocation(m_shaderID, "material.specular");
+	m_uniformShininess = glGetUniformLocation(m_shaderID, "material.shininess");
 }

@@ -30,7 +30,7 @@ namespace Mocha
 	{
 
 	public:
-		RenderObject(Material* mat, Mesh* mesh, glm::mat4 projectionMatrix, Camera* camera);
+		RenderObject(Material* mat, Mesh* mesh);
 		RenderObject();
 		~RenderObject();
 

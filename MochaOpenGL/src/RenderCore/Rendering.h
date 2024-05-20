@@ -20,18 +20,39 @@ namespace Mocha
 
 	namespace Rendering
 	{
+		namespace Uniforms
+		{
+			// Store all uniforms here
+
+			inline GLuint
+
+				uniformProjection = 0,
+				uniformModel = 0,
+				uniformView = 0,
+
+				uniformEyePosition = 0, // Camera position
+
+				uniformAmbientIntensity = 0,
+				uniformAmbientColour = 0,
+				uniformDirection = 0,
+				uniformDiffuseIntensity = 0,
+
+				uniformSpecularIntensity = 0,
+				uniformSpecularShininess = 0;
+
+		}
 
 		namespace Globals
 		{
-			static const int windowWidth = 2000;
-			static const int windowHeight = 1400;
+			// Persistant variables which are handy to have globally accessible
 
-			static GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0;
-			//GLuint uniformAmbientColour = 0, uniformAmbientIntensity = 0;
-			static glm::mat4 projection;
-			static Camera camera;
+			inline const int windowWidth = 2000;
+			inline const int windowHeight = 1400;
 
-			static GLfloat deltaTime = 0.0f;
+			inline glm::mat4 projectionMatrix;
+			inline Camera camera;
+
+			inline GLfloat deltaTime = 0.0f;
 		}
 
 		// Starts the program

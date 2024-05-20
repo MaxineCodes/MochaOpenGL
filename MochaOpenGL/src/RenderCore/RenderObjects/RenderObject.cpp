@@ -9,17 +9,16 @@
 
 #include <iostream>
 
-Mocha::RenderObject::RenderObject(Material* mat, Mesh* mesh, glm::mat4 projectionMatrix, Camera* camera)
+Mocha::RenderObject::RenderObject(Material* mat, Mesh* mesh)
 {
 	m_material = mat;
 	m_mesh = mesh;
 
-	m_camera_ptr = camera;
-	m_projectionMatrix = projectionMatrix;
+	// Grab some global variables
+	m_camera_ptr = &Rendering::Globals::camera;
+	m_projectionMatrix = Rendering::Globals::projectionMatrix;
 
-	//m_camera_ptr = &RenderGlobals::camera;
-	//m_projectionMatrix = RenderGlobals::projection;
-
+	// Blank model matrix
 	m_modelMatrix = glm::mat4(1.0f);
 
 }
@@ -52,8 +51,10 @@ void Mocha::RenderObject::draw(Light* light)
 	// Apply ambient light uniforms
 	uniformAmbientColour = m_material->getShader()->getAmbientColourLocation();
 	uniformAmbientIntensity = m_material->getShader()->getAmbientIntensityLocation();
+	//uniformDiffuseIntensity = m_material->getShader()->getDiffuseIntensityLocation();
+	//uniformAmbientIntensity = m_material->getShader()->getAmbientIntensityLocation();
 
-	light->useLight(uniformAmbientIntensity, uniformAmbientColour);
+	light->useLight();
 
 	// Apply transformations stored in the member transform vectors
 	applyTransforms();
